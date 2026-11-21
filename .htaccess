@@ -1,0 +1,22 @@
+Options -Indexes
+
+<IfModule mod_php.c>
+  php_value upload_max_filesize 40M
+  php_value post_max_size 48M
+  php_value max_execution_time 120
+  php_value memory_limit 256M
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Bloqueia código Python, venv e metadados
+  RewriteRule ^(receipt_splitter\.py|split_cli\.py|app\.py|requirements\.txt|README\.md|\.gitignore)$ - [F,L]
+  RewriteRule ^(__pycache__|\.venv)/ - [F,L]
+</IfModule>
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "\.(py|pyc|pyo|md|txt)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>

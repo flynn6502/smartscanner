@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.zip
+sample_scan.pdf
+debug_*.png
+.DS_Store
+Thumbs.db
+uploads/
+tmp/
